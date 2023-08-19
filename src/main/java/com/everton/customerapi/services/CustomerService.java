@@ -1,11 +1,12 @@
 package com.everton.customerapi.services;
 
-import com.everton.customerapi.dtos.CustomerRecord;
+import com.everton.customerapi.dtos.requests.CustomerRecordRequest;
+import com.everton.customerapi.dtos.responses.CustomerRecordResponse;
 
 import java.util.List;
 
 public interface CustomerService {
-    List<CustomerRecord> getAllCustomers();
+    List<CustomerRecordResponse> getAllCustomers();
 
-    CustomerRecord getCustomerByCpf(String cpf);
+    CustomerRecordResponse getCustomerByCpf(String cpf);
 }
