@@ -2,7 +2,7 @@ package com.everton.customerapi.dto;
 
 import java.util.List;
 
-public record CustomerRecordRequest(
+public record CustomerRecord(
         String fullName,
         String socialName,
         String birthDate,
