@@ -1,4 +1,4 @@
-package com.everton.customerapi.dto;
+package com.everton.customerapi.dtos;
 
 public record AddressRecord(
         int type,

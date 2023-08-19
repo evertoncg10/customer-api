@@ -1,7 +1,7 @@
 package com.everton.customerapi.models;
 
-import com.everton.customerapi.dto.AddressRecord;
-import com.everton.customerapi.dto.PhoneRecord;
+import com.everton.customerapi.dtos.AddressRecord;
+import com.everton.customerapi.dtos.PhoneRecord;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;

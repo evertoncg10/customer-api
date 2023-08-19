@@ -1,7 +1,7 @@
-package com.everton.customerapi.controller;
+package com.everton.customerapi.controllers;
 
-import com.everton.customerapi.dto.CustomerRecord;
-import com.everton.customerapi.service.CustomerService;
+import com.everton.customerapi.dtos.CustomerRecord;
+import com.everton.customerapi.services.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

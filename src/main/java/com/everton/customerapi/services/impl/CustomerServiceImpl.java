@@ -1,8 +1,7 @@
-package com.everton.customerapi.service.impl;
+package com.everton.customerapi.services.impl;
 
-import com.everton.customerapi.dto.CustomerRecord;
-import com.everton.customerapi.service.CustomerService;
-import lombok.AllArgsConstructor;
+import com.everton.customerapi.dtos.CustomerRecord;
+import com.everton.customerapi.services.CustomerService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

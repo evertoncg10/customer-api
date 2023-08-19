@@ -1,6 +1,6 @@
-package com.everton.customerapi.service;
+package com.everton.customerapi.services;
 
-import com.everton.customerapi.dto.CustomerRecord;
+import com.everton.customerapi.dtos.CustomerRecord;
 
 import java.util.List;
 
