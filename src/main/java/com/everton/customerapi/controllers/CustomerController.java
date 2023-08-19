@@ -1,6 +1,5 @@
 package com.everton.customerapi.controllers;
 
-import com.everton.customerapi.dtos.requests.CustomerRecordRequest;
 import com.everton.customerapi.dtos.responses.CustomerRecordResponse;
 import com.everton.customerapi.services.CustomerService;
 import lombok.AllArgsConstructor;

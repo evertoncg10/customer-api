@@ -1,13 +1,9 @@
 package com.everton.customerapi.models;
 
-import com.everton.customerapi.dtos.AddressRecord;
-import com.everton.customerapi.dtos.PhoneRecord;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,14 +12,22 @@ import java.util.List;
 @ToString
 @Builder
 @Entity
+@AllArgsConstructor
 @Table(name = "tb_customers")
 public class CustomerModel implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     @Id
     private String cpf;
+    @Column(name = "full_name")
     private String fullName;
+    @Column(name = "social_name")
     private String socialName;
+    @Column(name = "birth_date")
     private String birthDate;
-    private List<AddressRecord> adresses;
-    private List<PhoneRecord> phones;
+    @OneToMany(mappedBy = "customer")
+    private List<AddressModel> adresses;
+    @OneToMany(mappedBy = "customer")
+    private List<PhoneModel> phones;
     private String email;
 }

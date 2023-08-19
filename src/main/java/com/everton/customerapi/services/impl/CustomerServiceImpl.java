@@ -1,7 +1,7 @@
 package com.everton.customerapi.services.impl;
 
-import com.everton.customerapi.dtos.requests.CustomerRecordRequest;
 import com.everton.customerapi.dtos.responses.CustomerRecordResponse;
+import com.everton.customerapi.mappers.CustomerResponseMapper;
 import com.everton.customerapi.models.CustomerModel;
 import com.everton.customerapi.repositories.CustomerRepository;
 import com.everton.customerapi.services.CustomerService;
@@ -18,37 +18,21 @@ public class CustomerServiceImpl implements CustomerService {
 
     private CustomerRepository customerRepository;
 
+    private CustomerResponseMapper customerResponseMapper;
+
     @Override
     public List<CustomerRecordResponse> getAllCustomers() {
-
         List<CustomerModel> customers = customerRepository.findAll();
-        //TODO: Fazer Mapper de List<CustomerModel> para List<CustomerRecordResponse>
-
-        var customerRecord = new CustomerRecordResponse(
-                "Everton Cezar Gonçalves",
-                "Everton Gonçalves",
-                "12/08/1985",
-                "04048238906",
-                new ArrayList<>(),
-                new ArrayList<>(),
-                "evertoncg10@outlook.com"
-        );
-        return List.of(customerRecord);
+        return customerResponseMapper.sourceToDestination(customers);
     }
 
     @Override
     public CustomerRecordResponse getCustomerByCpf(String cpf) {
+        CustomerRecordResponse response = new CustomerRecordResponse("", "", "", "", new ArrayList<>(), new ArrayList<>(), "");
         Optional<CustomerModel> customer = customerRepository.findById(cpf);
-
-        //TODO: Fazer Mapper de CustomerModel para CustomerRecordResponse
-        return new CustomerRecordResponse(
-                "Everton Cezar Gonçalves",
-                "Everton Gonçalves",
-                "12/08/1985",
-                "04048238906",
-                new ArrayList<>(),
-                new ArrayList<>(),
-                "evertoncg10@outlook.com"
-        );
+        if(customer.isPresent()){
+            response = customerResponseMapper.sourceToDestination(customer.get());
+        }
+        return response;
     }
 }

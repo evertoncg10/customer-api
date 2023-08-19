@@ -1,7 +1,7 @@
 package com.everton.customerapi.dtos;
 
 public record PhoneRecord(
-        String type,
+        int type,
         String number,
         String ddd,
         String ddi,

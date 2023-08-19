@@ -6,10 +6,10 @@ import com.everton.customerapi.dtos.PhoneRecord;
 import java.util.List;
 
 public record CustomerRecordRequest(
+        String cpf,
         String fullName,
         String socialName,
         String birthDate,
-        String cpf,
         List<AddressRecord> adresses,
         List<PhoneRecord> phones,
         String email
