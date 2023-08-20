@@ -40,9 +40,9 @@ public class CustomerController {
     }
 
     @DeleteMapping("/customers/{cpf}")
-    public ResponseEntity.BodyBuilder deleteCustomer(@PathVariable String cpf) {
+    public ResponseEntity<String> deleteCustomer(@PathVariable String cpf) {
         customerService.deleteCustomer(cpf);
-        return ResponseEntity.ok();
+        return ResponseEntity.ok("Cliente excluido com sucesso");
     }
 
 }
