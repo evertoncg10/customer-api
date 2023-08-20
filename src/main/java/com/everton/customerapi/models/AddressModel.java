@@ -13,18 +13,19 @@ import java.util.UUID;
 @Builder
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "tb_address")
 public class AddressModel implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name = "id_address")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_address", updatable = false, unique = true, nullable = false)
     private UUID idAddress;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cpf")
+    @ManyToOne
     private CustomerModel customer;
     private int type;
+    @Column(name = "zip_code")
     private String zipCode;
     @Column(name = "street_our_avenue")
     private String streetOurAvenue;

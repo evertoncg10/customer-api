@@ -13,16 +13,16 @@ import java.util.UUID;
 @Builder
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "tb_phone")
 public class PhoneModel implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name = "id_phone")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_phone", updatable = false, unique = true, nullable = false)
     private UUID idPhone;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cpf")
+    @ManyToOne
     private CustomerModel customer;
     private int type;
     private String number;

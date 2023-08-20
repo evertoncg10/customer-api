@@ -1,13 +1,12 @@
 package com.everton.customerapi.controllers;
 
+import com.everton.customerapi.dtos.requests.CustomerRecordRequest;
 import com.everton.customerapi.dtos.responses.CustomerRecordResponse;
 import com.everton.customerapi.services.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,4 +26,23 @@ public class CustomerController {
         var customerByCpf = customerService.getCustomerByCpf(cpf);
         return ResponseEntity.status(HttpStatus.OK).body(customerByCpf);
     }
+
+    @PostMapping("/customers")
+    public ResponseEntity<CustomerRecordResponse> saveCustomer(@RequestBody CustomerRecordRequest customerRecordRequest) {
+        var customerRecordResponse = customerService.saveAndUpdateCustomer(customerRecordRequest);
+        return ResponseEntity.ok(customerRecordResponse);
+    }
+
+    @PutMapping("/customers")
+    public ResponseEntity<CustomerRecordResponse> updateCustomer(@RequestBody CustomerRecordRequest customerRecordRequest) {
+        var customerRecordResponse = customerService.saveAndUpdateCustomer(customerRecordRequest);
+        return ResponseEntity.ok(customerRecordResponse);
+    }
+
+    @DeleteMapping("/customers/{cpf}")
+    public ResponseEntity.BodyBuilder deleteCustomer(@PathVariable String cpf) {
+        customerService.deleteCustomer(cpf);
+        return ResponseEntity.ok();
+    }
+
 }

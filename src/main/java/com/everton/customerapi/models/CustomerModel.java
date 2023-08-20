@@ -13,6 +13,7 @@ import java.util.List;
 @Builder
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "tb_customers")
 public class CustomerModel implements Serializable {
     @Serial
@@ -25,9 +26,9 @@ public class CustomerModel implements Serializable {
     private String socialName;
     @Column(name = "birth_date")
     private String birthDate;
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(cascade = CascadeType.ALL)
     private List<AddressModel> adresses;
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(cascade = CascadeType.ALL)
     private List<PhoneModel> phones;
     private String email;
 }
